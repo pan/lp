@@ -27,7 +27,12 @@ module LonelyPlanet
 
     # get the name of the destination
     def name
-      @destination.attr('title').to_s
+      node = @destination.first
+      return node['title'] if node
+    end
+
+    def exist?
+      !@destination.empty?
     end
 
   end
