@@ -1,8 +1,9 @@
 module LonelyPlanet
   module Utils
-    # strip and squeeze space from a string, then replace space with underscore
+    # strip and squeeze space from a string, then replace space and slash
+    # with underscore
     def str_strip(string) 
-      string.strip.squeeze.gsub(' ', '_')
+      string.strip.squeeze.gsub(/[ \/]/, '_')
     end
 
     # tidy a +filename+ and add "html" extention name

@@ -34,9 +34,11 @@ module LonelyPlanet
           continent.each { |node|
             threads << Thread.new {
               dest = LonelyPlanet::Destination.new node.id,all_destinations_frag
-              dest_file = File.join output_dir, dest.name
-              printer = LonelyPlanet::Printer.new(dest_file)
-              printer.print page.render(dest, hierarchy)
+              if dest.exist?
+                dest_file = File.join output_dir, str_strip(dest.name)
+                printer = LonelyPlanet::Printer.new(dest_file)
+                printer.print page.render(dest, hierarchy)
+              end
             }
           }
           threads.each { |t| t.join }
@@ -52,6 +54,8 @@ module LonelyPlanet
         FileUtils.cp(css_file, target_dir)
       end
 
+      include LonelyPlanet::Utils
+      extend LonelyPlanet::Utils
     end
   end
 
