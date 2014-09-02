@@ -1,0 +1,39 @@
+# Installation
+
+## Ruby
+
+Please use ruby version 1.9.2 above to run this program. The current stable
+verion is recommended.
+
+## The required gems 
+
+  $ gem install nokogiri
+  $ gem install rubytree
+
+# Usage Note
+
+You may get the help like below by invoking it with option '-h' or '--help'.
+It will abort the execution if all the required options are not provided.
+
+$ ./processor.rb -h
+Usage: processor <options>
+    -t, --taxonomy taxonomy.xml      Full path to the taxonomy file
+    -d destinations.xml,             Full path to the destinations file
+        --destination
+    -o, --output directory           Output to this directory
+    -h, --help                       Show this help message
+
+# Testing
+
+The code is tested with ruby v2.1.2.
+To run all the test cases, type
+
+$ rake
+
+Or run a particular test. For example, 
+
+$ ruby test/test_destination.rb -n test_destination_name
+
+# Performance
+
+The time consuming part is multi-threaded in order to get the best concurrency.
